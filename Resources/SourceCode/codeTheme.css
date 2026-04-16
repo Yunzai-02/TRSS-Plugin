@@ -4,12 +4,12 @@
 .hljs-selector-tag,
 .hljs-name,
 .hljs-meta {
-    color: #FF79C6;
-    font-style: normal;
+	color: #ff79c6;
+	font-style: normal;
 }
 
 .hljs-string {
-    color: #F1FA8C;
+	color: #f1fa8c;
 }
 
 .hljs-title.function_,
@@ -18,8 +18,8 @@
 .hljs-code,
 .hljs-meta .hljs-keyword,
 .hljs-tag .hljs-attr {
-    color: #4EF36C;
-    font-style: normal;
+	color: #4ef36c;
+	font-style: normal;
 }
 
 .hljs-number,
@@ -27,14 +27,14 @@
 .hljs-variable.constant_,
 .hljs-variable.language_,
 .hljs-section {
-    color: #BD93F9;
-    font-style: normal;
+	color: #bd93f9;
+	font-style: normal;
 }
 
 .hljs-params,
 .hljs-variable {
-    color: #FFB167;
-    font-style: italic;
+	color: #ffb167;
+	font-style: italic;
 }
 
 .hljs-title.class_,
@@ -43,38 +43,38 @@
 .hljs-link,
 .hljs-attribute,
 .hljs-built_in {
-    color: #8BE9FD;
-    font-style: normal;
+	color: #8be9fd;
+	font-style: normal;
 }
 
 .hljs-regexp {
-    color: #FF5555
+	color: #ff5555;
 }
 
 .hljs-subst,
 .hljs-tag {
-    color: #fff
+	color: #fff;
 }
 
 .hljs-section {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 .hljs-strong {
-    color: #FFB86C;
+	color: #ffb86c;
 }
 
 .language-javascript .hljs-attr,
 .language-typescript .hljs-attr {
-    color: #fff;
+	color: #fff;
 }
 
 .hljs-type,
 .hljs-selector-class {
-    font-style: italic;
+	font-style: italic;
 }
 
 .hljs-comment {
-    color: #62729A;
-    font-style: normal;
+	color: #62729a;
+	font-style: normal;
 }
