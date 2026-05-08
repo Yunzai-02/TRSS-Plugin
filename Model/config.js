@@ -5,11 +5,7 @@ import _ from 'lodash'
 const configFile = 'config/TRSS.yaml'
 const config = {
 	tips: '',
-
-	miHoYoLogin: {
-		help: true,
-		open: true
-	}
+	background: ''
 }
 
 let configData

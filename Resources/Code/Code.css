@@ -1,37 +1,230 @@
 @import url(../common/common.css);
 
-@font-face {
-	font-family: Inconsolata;
-	src: url('../fonts/Inconsolata.ttf');
-}
-
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	-webkit-user-select: none;
-	user-select: none;
-}
-
 body {
-	width: 850px;
+	width: fit-content;
+	min-width: 720px;
+	max-width: 960px;
 }
 
-.container {
-	width: 850px;
-	font-family: Inconsolata, monospace;
+.main-card {
+	padding: 24px 28px;
+	max-width: 100%;
+}
+
+/* ===== 头部 ===== */
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid var(--border-dim);
+	position: relative;
+	z-index: 2;
+}
+
+.brand {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.logo-box {
+	width: 42px;
+	height: 42px;
+	background: var(--gradient-accent);
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-weight: 700;
+	font-size: 12px;
+	font-family: var(--font-mono);
+	box-shadow: var(--shadow-glow-pink);
+}
+
+.brand-text h1 {
+	font-size: 20px;
+	color: var(--text-primary);
+	font-weight: 700;
+	line-height: 1.1;
+}
+.brand-text h1 span {
+	background: var(--gradient-accent);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	font-weight: 800;
+}
+.brand-text p {
+	font-size: 9px;
+	color: var(--text-muted);
+	letter-spacing: 3px;
+	margin-top: 2px;
+	text-transform: uppercase;
+}
+
+.status-group {
+	display: flex;
+	gap: 16px;
+	align-items: center;
+}
+
+.status-item {
+	text-align: right;
+}
+.status-item .time {
+	display: block;
+	font-size: 18px;
+	color: var(--text-primary);
+	font-weight: 700;
+	font-family: var(--font-mono);
+}
+.status-item .sub {
+	font-size: 8px;
+	color: var(--text-muted);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.exec-badge {
+	padding: 5px 12px;
+	background: rgba(110, 231, 183, 0.08);
+	border: 1px solid rgba(110, 231, 183, 0.2);
+	border-radius: 16px;
+	color: var(--accent-mint);
+	font-size: 10px;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+.exec-badge .dot {
+	width: 6px;
+	height: 6px;
+	background: var(--accent-mint);
+	border-radius: 50%;
+	box-shadow: 0 0 6px var(--accent-mint);
+}
+
+/* ===== 区块 ===== */
+.section {
+	margin-bottom: 16px;
+	position: relative;
+	z-index: 1;
+}
+
+.section-label {
+	font-size: 9px;
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	display: flex;
+	align-items: center;
+	margin-bottom: 8px;
+	color: var(--accent-purple);
+}
+.section-label::before {
+	content: '';
+	width: 12px;
+	height: 2px;
+	background: var(--gradient-accent);
+	margin-right: 8px;
+	border-radius: 1px;
 }
 
 .box {
-	padding: 10px;
-	background: rgba(13, 13, 13, 0.85);
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	backdrop-filter: blur(19px);
-	-webkit-backdrop-filter: blur(19px);
+	background: var(--bg-elevated);
+	border: 1px solid var(--border-dim);
 	border-radius: 10px;
-	border: 1px solid rgba(255, 255, 255, 0.18);
+	padding: 14px 16px;
+}
+
+/* 命令预览 */
+.command-preview {
+	border-left: 2px solid var(--accent-pink);
+	font-family: var(--font-mono);
+	font-size: 13px;
+	color: var(--text-secondary);
+	display: flex;
+	align-items: center;
+}
+
+.prompt {
+	color: var(--accent-cyan);
+	font-weight: 600;
+	margin-right: 8px;
+}
+
+.cmd-text {
+	color: var(--text-primary);
+}
+
+/* 分隔线 */
+.divider {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 14px 0;
+	font-size: 9px;
+	color: var(--text-muted);
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+.divider-line {
+	flex: 1;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, var(--border-subtle), var(--border-accent), var(--border-subtle), transparent);
+}
+
+/* 输出区域 - 移除滚动限制 */
+.output-area {
+	/* 不设置 max-height，完全展开 */
+}
+
+.code-wrapper {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	line-height: 1.7;
+	color: var(--text-secondary);
 	white-space: pre-wrap;
-	overflow-wrap: break-word;
-	font-family: Inconsolata, monospace;
-	color: #fff;
+	word-break: break-all;
+}
+
+pre, code {
+	background: transparent !important;
+	font-family: inherit !important;
+}
+
+/* ===== 底部 ===== */
+.footer {
+	margin-top: 20px;
+	padding-top: 14px;
+}
+
+.footer-left {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.footer-icon {
+	background: var(--gradient-accent);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	font-weight: 700;
+	font-family: var(--font-mono);
+}
+
+.plugin-info {
+	color: var(--accent-cyan);
+	font-weight: 600;
+}
+
+.footer-right {
+	color: var(--text-muted);
 }

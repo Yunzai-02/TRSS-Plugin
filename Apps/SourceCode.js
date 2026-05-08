@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises'
 import File from '../Model/file.js'
+import config from '../Model/config.js'
 import path from 'path'
 import puppeteer from '../../../lib/puppeteer/puppeteer.js'
 
@@ -65,6 +66,7 @@ export class SourceCode extends plugin {
 			SourceCode,
 			fileSuffix,
 			lnStart: (rows && rows[0]) || 1,
+			background: config.background || '',
 			multiPageHeight: 20000
 		})
 

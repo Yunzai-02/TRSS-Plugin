@@ -1,4 +1,5 @@
 import puppeteer from '../../../lib/puppeteer/puppeteer.js'
+import config from '../Model/config.js'
 import hljs from '@highlightjs/cdn-assets/highlight.min.js'
 import { AnsiUp } from 'ansi_up'
 const ansi_up = new AnsiUp()
@@ -20,6 +21,8 @@ if (process.platform == 'win32') {
 	langCmd = 'powershell'
 } else if (process.env.SHELL?.endsWith('/bash'))
 	prompt = (cmd) => [`"$0" -ic 'echo "\${PS1@P}"';${cmd}`, { shell: process.env.SHELL }]
+
+const background = config.background || ''
 
 export class RemoteCommand extends plugin {
 	constructor() {
@@ -107,7 +110,14 @@ export class RemoteCommand extends plugin {
 		if (ret.error) Code.push(`错误：\n${Bot.Loging(ret.error)}`)
 
 		Code = await ansi_up.ansi_to_html(Code.join('\n\n'))
-		const img = await puppeteer.screenshots('Code', { tplFile, htmlDir, Code, multiPageHeight: 20000, cmd: cmd })
+		const img = await puppeteer.screenshots('Code', {
+			tplFile,
+			htmlDir,
+			Code,
+			multiPageHeight: 20000,
+			cmd: cmd,
+			background
+		})
 		return this.reply(img, true)
 	}
 
@@ -136,7 +146,7 @@ export class RemoteCommand extends plugin {
 
 		Code = await ansi_up.ansi_to_html(Code.join('\n\n'))
 		Code = inspectCmd(hljs.highlight(cmd, { language: langCmd }).value, Code)
-		const img = await puppeteer.screenshot('Code', { tplFile, htmlDir, Code, cmd: cmd })
+		const img = await puppeteer.screenshot('Code', { tplFile, htmlDir, Code, cmd: cmd, background })
 		return this.reply(img, true)
 	}
 
@@ -159,7 +169,7 @@ export class RemoteCommand extends plugin {
 
 		if (Code.length) {
 			Code = await ansi_up.ansi_to_html(Code.join('\n\n'))
-			const img = await puppeteer.screenshot('Code', { tplFile, htmlDir, Code })
+			const img = await puppeteer.screenshot('Code', { tplFile, htmlDir, Code, background })
 			this.reply(img, true)
 		}
 		return rets

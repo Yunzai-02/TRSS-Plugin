@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises'
 import File from '../Model/file.js'
+import config from '../Model/config.js'
 import puppeteer from '../../../lib/puppeteer/puppeteer.js'
 import MarkdownIt from 'markdown-it'
 const md = new MarkdownIt({ html: true })
@@ -49,6 +50,7 @@ export class Markdown extends plugin {
 			tplFile,
 			htmlDir,
 			Markdown,
+			background: config.background || '',
 			pageGotoParams: {
 				waitUntil: 'networkidle2'
 			}
